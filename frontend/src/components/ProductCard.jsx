@@ -1,16 +1,59 @@
-import { useCartStore } from '../store/cartStore'
+import React from 'react';
 
-function ProductCard({ product }) {
-  const addToCart = useCartStore(state => state.addToCart)
+// Now receiving 'cart' prop to check quantities
+const ProductCard = ({ product, cart, onAddToCart, onUpdateQty }) => {
+  
+  // Check if item is already in cart
+  const cartItem = cart.find(item => item.id === product.id);
+  const quantity = cartItem ? cartItem.qty : 0;
+
+  // Calculate Discount %
+  const discount = product.originalPrice > product.price 
+    ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)
+    : 0;
 
   return (
-    <div style={{ border: '1px solid #ccc', padding: '1rem', width: '200px' }}>
-      <img src={product.image} alt={product.name} width='100%' />
-      <h3>{product.name}</h3>
-      <p>৳{product.price}</p>
-      <button onClick={() => addToCart(product)}>Add to Cart</button>
-    </div>
-  )
-}
+    <div className="product-card">
+      {/* Discount Badge */}
+      {discount > 0 && (
+        <div className="discount-badge">{discount}% OFF</div>
+      )}
 
-export default ProductCard
+      <div className="image-container">
+        <img src={product.image} alt={product.name} />
+      </div>
+
+      <div className="product-info">
+        <h3>{product.name}</h3>
+        <p className="unit">{product.unit}</p>
+        
+        <div className="price-row">
+          <span className="price">৳ {product.price}</span>
+          {discount > 0 && (
+             <span className="old-price">৳ {product.originalPrice}</span>
+          )}
+        </div>
+
+        {/* Smart Button Logic */}
+        <div className="action-area">
+          {quantity === 0 ? (
+            <button 
+              className="add-btn"
+              onClick={() => onAddToCart(product)}
+            >
+              Add to Bag
+            </button>
+          ) : (
+            <div className="qty-counter">
+              <button onClick={() => onUpdateQty(product.id, -1)}>−</button>
+              <span>{quantity}</span>
+              <button onClick={() => onUpdateQty(product.id, 1)}>+</button>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ProductCard;
