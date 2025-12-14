@@ -232,3 +232,22 @@ body { font-family: 'Segoe UI', sans-serif; background-color: #f6f6f6; }
   font-size: 14px;
   color: #222;
 }
+
+/* --- Animation Keyframes --- */
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(10px); /* Start slightly lower */
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0);    /* End in normal position */
+  }
+}
+
+/* --- Apply to Product Card --- */
+/* This targets the existing .product-card class you already have */
+.product-card {
+  /* This tells the browser: "Run the fadeIn animation for 0.4 seconds" */
+  animation: fadeIn 0.4s ease-out forwards; 
+}

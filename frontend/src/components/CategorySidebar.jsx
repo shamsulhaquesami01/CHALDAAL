@@ -1,28 +1,26 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './CategorySidebar.css';
 
+// Make sure these names match the "category" inside your src/data/products.js
 const categories = [
-  { id: 1, name: 'Flash Sales', icon: '⚡' },
-  { id: 2, name: 'Grocery', icon: '🥚' },
-  { id: 3, name: 'Pharmacy', icon: '💊' },
-  { id: 4, name: 'Food', icon: '🍗' },
-  { id: 5, name: 'Cleaning Supplies', icon: '🧹' },
-  { id: 6, name: 'Home & Kitchen', icon: '🍳' },
-  { id: 7, name: 'Baby Care', icon: '👶' },
-  { id: 8, name: 'Pet Care', icon: '🐱' },
+  { id: 1, name: 'Grocery', icon: '🥚' },
+  { id: 2, name: 'Oil', icon: '💧' },
+  { id: 3, name: 'Rice', icon: '🍚' },
+  { id: 4, name: 'Beverage', icon: '🥤' },
+  { id: 5, name: 'Cooking', icon: '🍳' },
 ];
 
-const CategorySidebar = () => {
-  const [activeId, setActiveId] = useState(2); // Default to 'Grocery'
-
+const CategorySidebar = ({ activeCategory, onSelectCategory }) => {
   return (
     <aside className="category-sidebar">
       <div className="menu-list">
         {categories.map((cat) => (
           <div 
             key={cat.id} 
-            className={`menu-item ${activeId === cat.id ? 'active' : ''}`}
-            onClick={() => setActiveId(cat.id)}
+            // If this category is the active one, add the 'active' class (yellow highlight)
+            className={`menu-item ${activeCategory === cat.name ? 'active' : ''}`}
+            // When clicked, run the function passed from App.jsx
+            onClick={() => onSelectCategory(cat.name)}
           >
             <span className="icon">{cat.icon}</span>
             <span className="label">{cat.name}</span>
@@ -31,7 +29,6 @@ const CategorySidebar = () => {
         ))}
       </div>
       
-      {/* Realistic Footer Links */}
       <div className="sidebar-footer">
         <p>📞 16710</p>
         <p>Help & Support</p>
