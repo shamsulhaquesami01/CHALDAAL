@@ -32,7 +32,7 @@ export const products = [
   {
     id: 4,
     name: "ACI Pure Salt",
-    category: "Cooking",
+    category: "Grocery",
     price: 40,
     originalPrice: 45,
     unit: "kg",

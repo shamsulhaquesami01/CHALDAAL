@@ -8,6 +8,11 @@ import CategorySidebar from './components/CategorySidebar';
 function App() {
   const [cart, setCart] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false); // <--- State for opening sidebar
+  const [selectedCategory, setSelectedCategory] = useState("Grocery"); // Default
+  // Filter products based on selection
+// Note: If you want a "Show All" option, handle that logic here
+const displayedProducts = products.filter(p => p.category === selectedCategory);
+
 
   // Add Item
   const handleAddToCart = (product) => {
@@ -21,18 +26,20 @@ function App() {
   };
 
   // Update Quantity (+ or -)
+// Update Quantity (and remove if 0)
   const handleUpdateQty = (id, amount) => {
-    setCart(cart.map(item => {
-      if (item.id === id) {
-        const newQty = item.qty + amount;
-        return newQty > 0 ? { ...item, qty: newQty } : item;
-      }
-      return item;
-    }));
-
+    setCart(prevCart => {
+      return prevCart.map(item => {
+        if (item.id === id) {
+          return { ...item, qty: item.qty + amount };
+        }
+        return item;
+      }).filter(item => item.qty > 0); // <--- This line removes items with 0 qty
+    });
   };
 
  return (
+    
     <div className="app-container">
       {/* Header (Keep as is) */}
       <header className="header">
@@ -55,22 +62,26 @@ function App() {
       <div className="main-layout" style={{ display: 'flex' }}>
         
         {/* Left Sidebar */}
-        <CategorySidebar />
+       {/* Left Sidebar */}
+<CategorySidebar 
+  activeCategory={selectedCategory} 
+  onSelectCategory={setSelectedCategory} 
+/>
 
         {/* Right Content */}
 <main className="product-grid" style={{ flex: 1, background: '#f6f6f6' }}>
   {/* ... banner code ... */}
 
   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '20px' }}>
-    {products.map((product) => (
-      <ProductCard 
-        key={product.id} 
-        product={product}
-        cart={cart}               // <--- NEW PROP
-        onAddToCart={handleAddToCart}
-        onUpdateQty={handleUpdateQty} // <--- NEW PROP
-      />
-    ))}
+ {displayedProducts.map((product) => (
+  <ProductCard 
+    key={product.id} 
+    product={product} 
+    cart={cart}
+    onAddToCart={handleAddToCart} 
+    onUpdateQty={handleUpdateQty}
+  />
+))}
   </div>
 </main>
       </div>
