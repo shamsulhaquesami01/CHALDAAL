@@ -1,9 +1,10 @@
 import React from 'react';
 import './CartSidebar.css';
 
-const CartSidebar = ({ isOpen, onClose, cartItems, onUpdateQty }) => {
+const CartSidebar = ({ isOpen, onClose, cartItems, onUpdateQty, onCheckout }) => {
   // Calculate total price
   const total = cartItems.reduce((acc, item) => acc + (item.price * item.qty), 0);
+
 
   return (
     <div className={`cart-sidebar ${isOpen ? 'open' : ''}`}>
@@ -38,9 +39,9 @@ const CartSidebar = ({ isOpen, onClose, cartItems, onUpdateQty }) => {
           <span>Total:</span>
           <span>৳ {total}</span>
         </div>
-        <button className="checkout-btn" onClick={() => alert("Proceeding to Checkout!")}>
-          Place Order
-        </button>
+<button className="checkout-btn" onClick={onCheckout}>
+        Place Order
+     </button>
       </div>
     </div>
   );
