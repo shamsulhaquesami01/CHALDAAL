@@ -48,3 +48,4 @@ const CartSidebar = ({ isOpen, onClose, cartItems, onUpdateQty, onCheckout }) =>
 };
 
 export default CartSidebar;
+//hi
