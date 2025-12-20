@@ -154,6 +154,20 @@ body { font-family: 'Segoe UI', sans-serif; background-color: #f6f6f6; }
   font-size: 18px;
 }
 
+.search-btn-inside {
+  position: absolute;
+  right:5px;
+  top: 50%;
+  font-size: 18px;
+  transform: translateY(-44%);
+  background: none; /* Chaldal Red/Pink */
+  border: none;
+  color:gray;
+  padding: 4px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
 /* Right: Location & Auth */
 .header-actions {
   display: flex;

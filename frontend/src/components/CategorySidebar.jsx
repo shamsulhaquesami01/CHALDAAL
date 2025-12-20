@@ -1,25 +1,28 @@
 import React from 'react';
 import './CategorySidebar.css';
 
-// Make sure these names match the "category" inside your src/data/products.js
 const categories = [
   { id: 1, name: 'Grocery', icon: '🥚' },
-  { id: 2, name: 'Oil', icon: '💧' },
-  { id: 3, name: 'Rice', icon: '🍚' },
-  { id: 4, name: 'Beverage', icon: '🥤' },
-  { id: 5, name: 'Cooking', icon: '🍳' },
+  { id: 2, name: 'Beverage', icon: '🥤' },
+  { id: 3, name: 'Pharmacy', icon: '💊' },
+  {
+    id: 4, name: 'Clothes', icon: '👕'
+  },
+  { id: 5, name: 'Electronics', icon: '📱' }
 ];
 
+// Note: We removed the extra search props. We only need 'onSelectCategory'
 const CategorySidebar = ({ activeCategory, onSelectCategory }) => {
+
   return (
     <aside className="category-sidebar">
       <div className="menu-list">
         {categories.map((cat) => (
           <div 
             key={cat.id} 
-            // If this category is the active one, add the 'active' class (yellow highlight)
             className={`menu-item ${activeCategory === cat.name ? 'active' : ''}`}
-            // When clicked, run the function passed from App.jsx
+            
+            // Just call the one function passed from App.js
             onClick={() => onSelectCategory(cat.name)}
           >
             <span className="icon">{cat.icon}</span>
