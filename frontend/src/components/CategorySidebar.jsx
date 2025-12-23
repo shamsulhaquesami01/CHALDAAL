@@ -8,6 +8,8 @@ const categories = [
   { id: 3, name: 'Rice', icon: '🍚' },
   { id: 4, name: 'Beverage', icon: '🥤' },
   { id: 5, name: 'Cooking', icon: '🍳' },
+  { id: 6, name: 'Food', icon: '🍔' },
+  { id: 7, name: 'Pharmacy', icon: '💊' },
 ];
 
 const CategorySidebar = ({ activeCategory, onSelectCategory }) => {

@@ -45,8 +45,8 @@ export const products = [
     category: "Grocery",
     price: 140,
     originalPrice: 150,
+    image :"https://chaldn.com/_mpimage/chicken-eggs-discounted-12-pcs?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D77392&q=best&v=1&m=400&webp=1",
     unit: "12 pcs",
-    image: "https://chaldn.com/_mpimage/fresh-chicken-eggs-layer-12-pcs?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D103631&q=best&v=1",
     stock: 50
   },
   {
@@ -56,7 +56,7 @@ export const products = [
     price: 90,
     originalPrice: 95,
     unit: "1 ltr",
-    image: "https://chaldn.com/_mpimage/pran-uht-milk-1-ltr?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D72036&q=best&v=1",
+    image: "https://chaldn.com/_mpimage/pran-uht-milk-200-ml?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D141078&q=best&v=1&m=400&webp=1",
     stock: 40
   },
   {
@@ -76,7 +76,7 @@ export const products = [
     price: 25,
     originalPrice: 30,
     unit: "12 pcs",
-    image: "https://chaldn.com/_mpimage/napa-extra-50065-mg-tablet-12-pcs?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D117367&q=best&v=1",
+    image: "https://chaldn.com/_mpimage/napa-pediatric-drop-15ml-1-pc?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D106697&q=low&v=1&m=400&webp=1",
     stock: 100
   }
 ];
